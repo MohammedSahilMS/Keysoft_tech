@@ -1,5 +1,89 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { FaRegClock, FaBolt, FaShieldAlt, FaFileInvoiceDollar } from 'react-icons/fa';
+import { RiFileTextLine, RiCodeSLine } from 'react-icons/ri';
+import { MdMedicalServices, MdBusinessCenter, MdGavel } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+
+
+const features = [
+  {
+    icon: <FaRegClock className="text-2xl text-white" />,
+    title: "FAST",
+    description: "On receipt of audio recording and stipulated payment, our clock starts ticking and customers can remain assured of accurate transcript output within 24 to 48 hours",
+  },
+  {
+    icon: <FaBolt className="text-2xl text-white" />,
+    title: "COST EFFECTIVE",
+    description: "Phoenix Cybertech offers the most cost effective solution to meet all your transcription needs and multi-stage review process ensures 98% accuracy throughout the job",
+  },
+  {
+    icon: <FaShieldAlt className="text-2xl text-white" />,
+    title: "SECURE & CONFIDENTIAL",
+    description: "All Phoenix Cybertech systems and protocols meet or exceed HIPAA compliance standards at every step of the medical transcription process",
+  },
+];
+
+// Define the services array
+const services = [
+  {
+    title: "Medical Transcription",
+    icon: <RiFileTextLine className="text-2xl" />,
+    description: "Professional medical transcription services converting dictated recordings into accurate medical documents.",
+  },
+  {
+    title: "Medical Coding",
+    icon: <MdMedicalServices className="text-2xl" />,
+    description: "Expert translation of medical procedures and diagnoses into standardized codes.",
+  },
+  {
+    title: "Medical Billing",
+    icon: <FaFileInvoiceDollar className="text-2xl" />,
+    description: "Comprehensive medical billing services ensuring proper reimbursement for healthcare providers.",
+  },
+  {
+    title: "Business Transcription",
+    icon: <MdBusinessCenter className="text-2xl" />,
+    description: "High-quality transcription services for all business documentation needs.",
+  },
+  {
+    title: "Legal Transcription",
+    icon: <MdGavel className="text-2xl" />,
+    description: "On-demand legal transcription services with maximum accuracy and confidentiality.",
+  },
+  {
+    title: "Software Development",
+    icon: <RiCodeSLine className="text-2xl" />,
+    description: "Custom software development solutions for digital transformation.",
+  },
+];
+
+// Define the FeatureCard component
+const FeatureCard = ({ icon, title, description }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-8 border border-white/10 backdrop-blur-sm"
+  >
+    <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-gradient-to-br from-primary to-secondary1 rounded-2xl flex items-center justify-center shadow-xl">
+      {icon}
+    </div>
+    <div className="mt-8 text-center">
+      <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
+      <p className="text-gray-400 mb-6">{description}</p>
+      <Link 
+        to="/about"
+        className="inline-flex items-center text-primary hover:text-white transition-colors"
+      >
+        READ MORE
+        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </Link>
+    </div>
+  </motion.div>
+);
 
 const Home = () => {
   const fadeInUp = {
@@ -10,6 +94,57 @@ const Home = () => {
 
   return (
     <main className="overflow-hidden">
+      <style>
+        {`
+          @keyframes rotate {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          .service-container {
+            position: relative;
+            animation: rotate 20s linear infinite;
+          }
+          .service-item {
+            position: absolute;
+            transform-origin: center;
+          }
+          @keyframes orbit {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          .orbit-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+          }
+          .orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: orbit 20s linear infinite;
+          }
+          .planet {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: -150px center;
+            transform: translate(-50%, -50%);
+          }
+          .planet-icon {
+            transform: rotate(0deg);
+          }
+        `}
+      </style>
+
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -20,7 +155,7 @@ const Home = () => {
         {/* Abstract Background Pattern */}
         <div className="absolute inset-0 bg-black opacity-50">
           <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
         </div>
 
@@ -195,6 +330,53 @@ const Home = () => {
               >
                 <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
                 <div className="text-gray-300">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* New Feature Cards Section */}
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div className="container mx-auto">
+          <motion.h2 
+            {...fadeInUp}
+            className="text-3xl md:text-4xl font-bold text-center text-white mb-16"
+          >
+            Why Choose Phoenix Cybertech Transcription Services!
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {features.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section with Modern Animation */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 to-black">
+        <div className="container mx-auto px-4">
+          <motion.h2 
+            {...fadeInUp}
+            className="text-3xl md:text-4xl font-bold text-center text-white mb-16"
+          >
+            Our Services
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white/5 rounded-2xl p-8 border border-white/10 flex flex-col items-center justify-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary1 rounded-xl flex items-center justify-center mb-2">
+                  {service.icon}
+                </div>
+                <h3 className="text-lg font-bold text-white">{service.title}</h3>
+                <p className="text-gray-300 text-sm">{service.description}</p>
               </motion.div>
             ))}
           </div>
