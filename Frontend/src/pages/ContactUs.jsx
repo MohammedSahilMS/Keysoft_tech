@@ -91,8 +91,8 @@ const ContactUs = () => {
               transition={{ delay: 0.1 }}
               className="inline-block mb-6"
             >
-              <div className="px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-                <span className="text-white/80 text-sm font-medium">Get in Touch</span>
+              <div className="px-6 py-2 rounded-full border border-white/10 bg-white/10">
+                <span className="text-white/90 text-sm font-medium">Get in Touch</span>
               </div>
             </motion.div>
             <motion.h1
@@ -124,7 +124,7 @@ const ContactUs = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="backdrop-blur-sm bg-white/5 rounded-2xl p-8 border border-white/10"
+              className="backdrop-filter bg-white/10 rounded-2xl p-8 border border-white/10"
             >
               <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
               <div className="space-y-6">
@@ -189,7 +189,7 @@ const ContactUs = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="backdrop-blur-sm bg-white/5 rounded-2xl p-8 border border-white/10"
+              className="backdrop-filter bg-white/10 rounded-2xl p-8 border border-white/10"
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -274,7 +274,7 @@ const ContactUs = () => {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="backdrop-blur-sm bg-white/5 rounded-2xl p-8 border border-white/10 overflow-hidden"
+            className="backdrop-filter bg-white/10 rounded-2xl p-8 border border-white/10 overflow-hidden"
           >
             <div className="h-96 w-full">
               <iframe

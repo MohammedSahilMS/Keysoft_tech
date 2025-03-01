@@ -153,9 +153,9 @@ const Home = () => {
         className="relative h-screen bg-gradient-to-br from-primary via-secondary1 to-black text-white"
       >
         {/* Abstract Background Pattern */}
-        <div className="absolute inset-0 bg-black opacity-50">
+        <div className="absolute inset-0 bg-black/60">
           <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
         </div>
 
@@ -173,7 +173,7 @@ const Home = () => {
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-xl md:text-2xl text-center max-w-2xl mx-auto text-gray-200"
+              className="text-xl md:text-2xl text-center max-w-2xl mx-auto text-white/90"
             >
               Innovative Solutions for Tomorrow's Challenges
             </motion.p>
@@ -197,7 +197,7 @@ const Home = () => {
         <div className="container mx-auto">
           <motion.h2 
             {...fadeInUp}
-            className="text-3xl md:text-4xl font-bold text-center text-white mb-16"
+            className="text-3xl md:text-4xl font-bold text-center text-white/90 mb-16"
           >
             Our Core Services
           </motion.h2>
@@ -228,7 +228,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="backdrop-blur-lg bg-white/10 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 group"
+                className="backdrop-filter bg-white/15 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/20 group"
               >
                 <div className="p-8">
                   {/* Icon Container */}
@@ -326,10 +326,10 @@ const Home = () => {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="backdrop-blur-lg bg-white/10 p-8 rounded-xl border border-white/20 text-center hover:transform hover:scale-105 transition-all duration-300"
+                className="backdrop-filter bg-white/15 p-8 rounded-xl border border-white/20 text-center hover:transform hover:scale-105 transition-all duration-300"
               >
-                <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-gray-300">{stat.label}</div>
+                <div className="text-4xl font-bold text-white/90 mb-2">{stat.number}</div>
+                <div className="text-white/80">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -353,30 +353,49 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section with Modern Animation */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-black">
+      {/* Services Section with Parallax Effect */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 to-black overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.h2 
-            {...fadeInUp}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
             className="text-3xl md:text-4xl font-bold text-center text-white mb-16"
           >
             Our Services
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex flex-col gap-16">
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white/5 rounded-2xl p-8 border border-white/10 flex flex-col items-center justify-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+                transition={{
+                  duration: 1,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
+                viewport={{ 
+                  once: true,
+                  margin: "-100px"
+                }}
+                className="w-full bg-white/5 rounded-2xl p-8 md:p-12 border border-white/10 flex flex-col md:flex-row items-center gap-8 backdrop-blur-sm relative group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary1 rounded-xl flex items-center justify-center mb-2">
-                  {service.icon}
+                {/* Background Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary1/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Icon Section */}
+                <div className="relative w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-primary to-secondary1 rounded-xl flex items-center justify-center flex-shrink-0 transform group-hover:scale-110 transition-transform duration-500">
+                  <div className="text-4xl md:text-5xl text-white">
+                    {service.icon}
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold text-white">{service.title}</h3>
-                <p className="text-gray-300 text-sm">{service.description}</p>
+
+                {/* Content Section */}
+                <div className="flex-grow text-center md:text-left relative">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{service.title}</h3>
+                  <p className="text-gray-300 text-lg md:text-xl">{service.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>

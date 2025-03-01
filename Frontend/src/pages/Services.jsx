@@ -27,7 +27,7 @@ const ServiceModal = ({ service, onClose }) => {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-gray-900/90 border border-white/10 rounded-2xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+        className="bg-gray-900/90 backdrop-filter border border-white/10 rounded-2xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
       >
         <button
           onClick={onClose}
@@ -216,8 +216,8 @@ const Services = () => {
               transition={{ delay: 0.1 }}
               className="inline-block mb-6"
             >
-              <div className="px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-                <span className="text-white/80 text-sm font-medium">Our Expertise</span>
+              <div className="px-6 py-2 rounded-full border border-white/10 bg-white/10">
+                <span className="text-white/90 text-sm font-medium">Our Expertise</span>
               </div>
             </motion.div>
             <motion.h1
@@ -282,7 +282,7 @@ const Services = () => {
                 className="group h-full"
                 onClick={() => setSelectedService(service)}
               >
-                <div className="relative backdrop-blur-sm bg-white/5 rounded-2xl p-8 border border-white/10 hover:border-primary/30 transition-all duration-300 cursor-pointer h-full flex flex-col min-h-[320px]">
+                <div className="relative backdrop-filter bg-white/10 rounded-2xl p-8 border border-white/10 hover:border-primary/30 transition-all duration-300 cursor-pointer h-full flex flex-col min-h-[320px]">
                   {/* Icon */}
                   <div className="absolute -top-6 right-6 w-16 h-16 bg-gradient-to-br from-primary to-secondary1 rounded-xl flex items-center justify-center shadow-lg transform -rotate-12 group-hover:rotate-0 transition-all duration-300">
                     {service.icon}
